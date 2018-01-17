@@ -1,0 +1,11 @@
+Ambient Air quality data for Delhi
+2015-2004*
+
+Links:
+https://data.gov.in/catalog/historical-daily-ambient-air-quality-data
+
+Official Govt. Notes:
+Data has been collected from the field instruments, It is likely that the data may display some errors or abnormal values. Any abnormal value may be due to any episode or instrumental error at any particular time; NA: Not Available/Not Applicable; Figures are in micrograms (one-millionth of a gram) per cubic meter.  
+
+Project notes:
+*Dataset for 2010 was not available , so added 2004.json just in case data is needed.
