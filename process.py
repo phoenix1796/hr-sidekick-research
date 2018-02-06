@@ -2,13 +2,12 @@ import json
 import csv
 from pprint import pprint
 
-
-def getJSON(path):
+def _getJSON(path):
     with open("./datasets/%s" % path) as JsonFile:
         data = json.load(JsonFile)
     return data
 
-def getCSV(path):
+def _getCSV(path):
     data = []
     with open("./datasets/%s" % path) as csvFile:
         dataReader = csv.reader(csvFile)
@@ -21,9 +20,9 @@ def getDataset(path):
     #get file extension
     extension = path.split(".")[-1].lower()
     if extension == "csv":
-        data=getCSV(path)
+        data = _getCSV(path)
     elif extension == "json":
-        data = getJSON(path)
+        data = _getJSON(path)
     else:
         return "file extension not supported"
     # separate column headers and actual data
@@ -36,7 +35,6 @@ def main():
     csv = getDataset("weather/delhiWeatherData - kaggle.csv")
     print(csv["headers"])
     print(json["headers"])
-
 
 if __name__ == '__main__':
     main()
