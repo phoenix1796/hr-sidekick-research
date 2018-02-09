@@ -2,42 +2,46 @@
 
 # Importing the libraries
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import pandas as pd
 
 # Importing the dataset
 d1 = pd.read_csv('2007_P.csv')
 d2 = pd.read_csv('2007_W.csv')
 d3 = pd.merge(d2, d1, on="Date")
-X = d3.iloc[:,1:-4].values
+# x = d3.iloc[:,1:-5].values
+x = d3.iloc[:,2].values
+x = x.reshape(-1, 1)
 y = d3.iloc[:,10].values
 
 # Splitting the dataset into the Training set and Test set
 from sklearn.cross_validation import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1, random_state = 0)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.1, random_state = 0)
 
 # Feature Scaling
-from sklearn.preprocessing import StandardScaler
-sc_X = StandardScaler()
-X_train = sc_X.fit_transform(X_train)
-X_test = sc_X.transform(X_test)
+# from sklearn.preprocessing import StandardScaler
+# sc_X = StandardScaler()
+# X_train = sc_X.fit_transform(X_train)
+# X_test = sc_X.transform(X_test)
 
 #to convert y into array
-y_train = y_train.reshape(-1,1) 
-y_test = y_test.reshape(-1,1) 
+# y_train = y_train.reshape(-1,1) 
+# y_test = y_test.reshape(-1,1) 
 
-sc_y = StandardScaler()
-y_train = sc_y.fit_transform(y_train)
-y_test = sc_y.fit_transform(y_test) 
+# sc_y = StandardScaler()
+# y_train = sc_y.fit_transform(y_train)
+# y_test = sc_y.fit_transform(y_test) 
 
 # Fitting Multiple Linear Regression to the Training set
+
+
 from sklearn.linear_model import LinearRegression
-regressor = LinearRegression() 
-regressor.fit(X_train, y_train)
+regressor = LinearRegression()
+# print(X_train)
+regressor.fit(x_train, y_train)
 
 # Predicting the Test set results
-y_pred = regressor.predict(X_test)
- 
+y_pred = regressor.predict(x_test)
 
 """#Building the optimal model using Backward Elimination
 import statsmodels.formula.api as sm
