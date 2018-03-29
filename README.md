@@ -1,2 +1,2 @@
-# Employee Turnover
-An ML aided prediction system for human resource management.
+# HR Dump Repo
+Maintains some files that help in Hr-Sidekik project
